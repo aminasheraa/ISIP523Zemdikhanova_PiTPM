@@ -1,0 +1,52 @@
+﻿<Page x:Class="ISIP523Zemdikhanova_PiTPM.Pages.Page1"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ISIP523Zemdikhanova_PiTPM.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page1"  Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="№1. Подставьте свои значения в уравнение: " Margin="25" FontSize="16" FontWeight="Bold" Width="360" HorizontalAlignment="Left"/>
+        <Button Grid.Row="0" x:Name="ForwardButton" Width="130" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Content="Далее" FontSize="16" FontWeight="Bold" Click="ForwardButton_Click"/>
+        <StackPanel Grid.Row="1" >
+            
+            <Image Height="90" Width="350" Source= "\Images\Image1.png" Margin="10"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="x :" FontSize="16" Margin="10" FontWeight="Bold"/>
+                        <TextBox x:Name="XTextBox" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="y :" FontSize="16" Margin="10" FontWeight="Bold"/>
+                        <TextBox x:Name="YTextBox" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="z :" FontSize="16" Margin="10" FontWeight="Bold"/>
+                        <TextBox x:Name="ZTextBox" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Oтвет: " HorizontalAlignment="Center" FontSize="16" Margin="5" />
+                        <TextBlock x:Name="AnswerTextBlock" Text=" " HorizontalAlignment="Center" FontSize="16" Margin="5" FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Top">
+                    <Button Content="Вычислить ответ " Height="25" HorizontalAlignment="Center" FontSize="14" Width="140"  Margin="8" Click="Button_Click"/>
+                    <Button x:Name="ClearButton" Content="Очистить " Height="25" HorizontalAlignment="Center" FontSize="14" Margin="8" Width="140" Click="ClearButton_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+                
+
+        </StackPanel>
+            
+    </Grid>
+</Page>
