@@ -13,7 +13,7 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="№1. Подставьте свои значения в уравнение: " Margin="25" FontSize="16" FontWeight="Bold" Width="360" HorizontalAlignment="Left"/>
+        <TextBlock Text="№1. Подставьте свои значения в функцию: " Margin="25" FontSize="16" FontWeight="Bold" Width="360" HorizontalAlignment="Left"/>
         <Button Grid.Row="0" x:Name="ForwardButton" Width="130" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Content="Далее" FontSize="16" FontWeight="Bold" Click="ForwardButton_Click"/>
         <StackPanel Grid.Row="1" >
             
@@ -33,8 +33,8 @@
                         <TextBlock Text="z :" FontSize="16" Margin="10" FontWeight="Bold"/>
                         <TextBox x:Name="ZTextBox" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Oтвет: " HorizontalAlignment="Center" FontSize="16" Margin="5" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="Oтвет: " HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="5" />
                         <TextBlock x:Name="AnswerTextBlock" Text=" " HorizontalAlignment="Center" FontSize="16" Margin="5" FontWeight="Bold"/>
                     </StackPanel>
                 </StackPanel>

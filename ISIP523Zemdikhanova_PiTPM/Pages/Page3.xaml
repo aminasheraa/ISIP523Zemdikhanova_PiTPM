@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" x:Name="BackButton" Width="130" Height="40" HorizontalAlignment="Left" Margin="20" Content="Назад" FontSize="16" FontWeight="Bold" Click="BackButton_Click"/>
+        <Button Grid.Row="0" x:Name="BackButton" Width="130" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" Content="Назад" FontSize="16" FontWeight="Bold" Click="BackButton_Click"/>
 
     </Grid>
 </Page>
