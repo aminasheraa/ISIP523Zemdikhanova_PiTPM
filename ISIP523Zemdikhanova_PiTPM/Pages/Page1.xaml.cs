@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,9 +42,7 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
                 return;
             }
 
-            if (!double.TryParse(XTextBox.Text, out double x) ||
-                !double.TryParse(YTextBox.Text, out double y) ||
-                !double.TryParse(ZTextBox.Text, out double z))
+            if (!double.TryParse(XTextBox.Text.Replace('.', ','), out double x) || !double.TryParse(YTextBox.Text.Replace('.', ','), out double y) || !double.TryParse(ZTextBox.Text.Replace('.', ','), out double z))
             {
                 MessageBox.Show("Введите корректные числа");
                 return;

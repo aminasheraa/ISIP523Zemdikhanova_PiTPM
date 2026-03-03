@@ -43,7 +43,9 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
 
             Series series = new Series("Функция");
             series.ChartType = SeriesChartType.Line;
-            series.BorderWidth = 2;
+
+            series.ToolTip = "X = #VALX, Y = #VALY";
+            series.MarkerStyle = MarkerStyle.Circle;
 
             ChartFunction.Series.Add(series);
 
@@ -52,6 +54,7 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
             title.Font = new System.Drawing.Font("Arial", 10, System.Drawing.FontStyle.Bold);
 
             ChartFunction.Titles.Add(title);
+            series.ToolTip = "X = #VALX, Y = #VALY";
         }
 
 
