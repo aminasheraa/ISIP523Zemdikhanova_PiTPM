@@ -40,15 +40,34 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
         {
             var textBox = sender as TextBox;
 
+
+            if (!char.IsDigit(e.Text, 0) && e.Text != "." && e.Text != "," && e.Text != "-")
+            {
+                e.Handled = true;
+                return;
+            }
+
+
+            if ((e.Text == "." || e.Text == ",") && textBox.SelectionStart == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+
+
+            if (e.Text == "-" && textBox.SelectionStart != 0)
+            {
+                e.Handled = true;
+                return;
+            }
+
             string fullText = textBox.Text.Remove(textBox.SelectionStart, textBox.SelectionLength).Insert(textBox.SelectionStart, e.Text);
 
-            fullText = fullText.Replace('.', ',');
-
-            bool isValid = (fullText == "-") ||
-                           (fullText.Count(c => c == ',') <= 1 && fullText.EndsWith(",") && double.TryParse(fullText.TrimEnd(','), out _)) ||
-                           double.TryParse(fullText, out _);
-
-            e.Handled = !isValid;
+            if (fullText.Count(c => c == ',' || c == '.') > 1)
+            {
+                e.Handled = true;
+                return;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -59,8 +78,7 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
                 return;
             }
 
-            if (!double.TryParse(XTextBox.Text, out double x) ||
-                !double.TryParse(BTextBox.Text, out double b))
+            if (!double.TryParse(XTextBox.Text.Replace('.', ','), out double x) || !double.TryParse(BTextBox.Text.Replace('.', ','), out double b))
             {
                 MessageBox.Show("Введите корректные числа");
                 return;

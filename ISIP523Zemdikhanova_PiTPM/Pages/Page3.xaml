@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ISIP523Zemdikhanova_PiTPM.Pages"
+      xmlns:charts="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Page3" Background="White">
@@ -14,7 +16,82 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" x:Name="BackButton" Width="130" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" Content="Назад" FontSize="16" FontWeight="Bold" Click="BackButton_Click"/>
+        <Button Grid.Row="0" x:Name="BackButton" Width="130" Height="35" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" Content="Назад" ToolTip="Вернуться на предыдущую страницу" FontSize="16" FontWeight="Bold" Click="BackButton_Click"/>
+        <TextBlock Text="№3. Построение графика функции" ToolTip="Задание №3" HorizontalAlignment="Center"  Margin="25" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="213*"/>
+                <ColumnDefinition Width="187*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Image Grid.Row="0" Height="60" Width="350" ToolTip="Формула функции: y = 9(x + 15√(x³ + b³))" Source="\Images\Image3.png"  HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="10">
+
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="x0 :" FontSize="16" Margin="10" FontWeight="Bold"/>
+                        <TextBox x:Name="X0TextBox" ToolTip="Введите начальное значение x (x0)" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="xk :" FontSize="16" Margin="10" FontWeight="Bold"/>
+                        <TextBox x:Name="XKTextBox" ToolTip="Введите конечное значение x (xk)" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="d(x) :" FontSize="16" Margin="5" FontWeight="Bold"/>
+                        <TextBox x:Name="DXTextBox" ToolTip="Введите шаг изменения x (dx). Должен быть больше 0" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="b :" FontSize="16" Margin="15" FontWeight="Bold"/>
+                        <TextBox x:Name="BTextBox" ToolTip="Введите значение параметра b" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ответ:"  ToolTip="Здесь выводятся вычисленные значения x и y" FontWeight="Bold" FontSize="16" Margin="5"/>
+
+                        <ScrollViewer Height="80"  VerticalScrollBarVisibility="Auto">
+                            <TextBlock x:Name="AnswerTextBlock" Text=""  TextWrapping="Wrap" FontSize="12" Margin="5"/>
+                        </ScrollViewer>
+                    </StackPanel>
+
+
+                </StackPanel>
+
+                <Grid Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Вычислить ответ" ToolTip="Выполнить вычисление и построить график" Height="30" FontSize="14" Width="160" Margin="8" Click="Button_Click"/>
+                        <Button x:Name="ClearButton" ToolTip="Очистить поля ввода, результат и график" Content="Очистить" Height="30" FontSize="14" Width="160" Margin="8" Click="ClearButton_Click"/>
+                    </StackPanel>
+                    <WindowsFormsHost ToolTip="График функции y от x" >
+                        <charts:Chart x:Name="ChartFunction"/>
+                    </WindowsFormsHost>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
 
     </Grid>
 </Page>

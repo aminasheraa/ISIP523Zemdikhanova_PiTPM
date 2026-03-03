@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP523Zemdikhanova_PiTPM"
         mc:Ignorable="d"
-        Title="Практическая работа 4 Земдиханова Амина" Height="500" Width="800">
+        Title="Практическая работа 4 Земдиханова Амина" Height="550" MinHeight="470" Width="800" MinWidth="700">
     <Grid>
-        <Frame x:Name="MainFrame" Source="Pages/Page1.xaml"/>
+        <Frame x:Name="MainFrame" Source="Pages/Page1.xaml" NavigationUIVisibility="Hidden"/>
+
     </Grid>
 </Window>

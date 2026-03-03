@@ -13,34 +13,34 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="№1. Подставьте свои значения в функцию: " Margin="25" FontSize="16" FontWeight="Bold" Width="360" HorizontalAlignment="Left"/>
-        <Button Grid.Row="0" x:Name="ForwardButton" Width="130" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Content="Далее" FontSize="16" FontWeight="Bold" Click="ForwardButton_Click"/>
+        <TextBlock Text="№1. Подставьте свои значения в функцию: " ToolTip="Задание №1" HorizontalAlignment="Center" Margin="25" FontSize="16" FontWeight="Bold" Width="360" />
+        <Button Grid.Row="0" x:Name="ForwardButton" ToolTip="Перейти на следующую страницу" Width="130" Height="35" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20" Content="Далее" FontSize="16" FontWeight="Bold" Click="ForwardButton_Click"/>
         <StackPanel Grid.Row="1" >
-            
-            <Image Height="90" Width="350" Source= "\Images\Image1.png" Margin="10"/>
+
+            <Image Height="90" Width="350" Source= "\Images\Image1.png" ToolTip="Формула функции №1" Margin="10"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock Text="x :" FontSize="16" Margin="10" FontWeight="Bold"/>
-                        <TextBox x:Name="XTextBox" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                        <TextBox x:Name="XTextBox" ToolTip="Введите число x (значение x должно быть в промежутке от -1 до 1)" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="y :" FontSize="16" Margin="10" FontWeight="Bold"/>
-                        <TextBox x:Name="YTextBox" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                        <TextBox x:Name="YTextBox" Height="25" ToolTip="Введите число y (только цифры, минус точка и запятая)" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <TextBlock Text="z :" FontSize="16" Margin="10" FontWeight="Bold"/>
-                        <TextBox x:Name="ZTextBox" Height="25" Width="150" PreviewTextInput="TextBox_PreviewTextInput"/>
+                        <TextBox x:Name="ZTextBox" Height="25" Width="150" ToolTip="Введите число z (только цифры, минус точка и запятая)" PreviewTextInput="TextBox_PreviewTextInput"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                        <TextBlock Text="Oтвет: " HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" Margin="5" />
-                        <TextBlock x:Name="AnswerTextBlock" Text=" " HorizontalAlignment="Center" FontSize="16" Margin="5" FontWeight="Bold"/>
+                        <TextBlock Text="Oтвет: " HorizontalAlignment="Center" ToolTip="Здесь будет результат вычислений функции" FontSize="16" FontWeight="Bold" Margin="5" />
+                        <TextBlock x:Name="AnswerTextBlock" Text=" "  HorizontalAlignment="Center" FontSize="16" Margin="5" FontWeight="Bold"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Top">
-                    <Button Content="Вычислить ответ " Height="25" HorizontalAlignment="Center" FontSize="14" Width="140"  Margin="8" Click="Button_Click"/>
-                    <Button x:Name="ClearButton" Content="Очистить " Height="25" HorizontalAlignment="Center" FontSize="14" Margin="8" Width="140" Click="ClearButton_Click"/>
+                    <Button Content="Вычислить ответ " Height="25" ToolTip="Нажмите для вычисления значения функции" HorizontalAlignment="Center" FontSize="14" Width="140"  Margin="8" Click="Button_Click"/>
+                    <Button x:Name="ClearButton" Content="Очистить "  ToolTip="Очистить все поля ввода и результат" Height="25" HorizontalAlignment="Center" FontSize="14" Margin="8" Width="140" Click="ClearButton_Click"/>
                 </StackPanel>
 
             </StackPanel>
