@@ -145,7 +145,7 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
 
                     if (underRoot < 0)
                     {
-                        AnswerTextBlock.Text += $"x = {x:F2} → подкоренное выражение < 0\n";
+                        AnswerTextBlock.Text += $"x = {x:F2} - подкоренное выражение < 0\n";
                         continue;
                     }
 
