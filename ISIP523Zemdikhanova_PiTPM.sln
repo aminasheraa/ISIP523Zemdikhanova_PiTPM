@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIP523Zemdikhanova_PiTPM", "ISIP523Zemdikhanova_PiTPM\ISIP523Zemdikhanova_PiTPM.csproj", "{CF6C918D-9C84-4830-8553-69002C81D23F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR6", "PR6\PR6.csproj", "{7F84BF3D-267B-462D-925A-3CA6C3CA03E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PR6part1", "PR6\PR6part1.csproj", "{7F84BF3D-267B-462D-925A-3CA6C3CA03E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
