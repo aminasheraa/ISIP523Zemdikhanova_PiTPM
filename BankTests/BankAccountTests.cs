@@ -76,8 +76,21 @@ namespace BankTests
             // Assert
             double actual = account.Balance;
 
-            Assert.AreEqual(expected, actual, 0.001, "Баланс после пополнения рассчитан неверно");
+            Assert.AreEqual(expected, actual, 0.001, "Account not credited correctly");
         }
 
+        [TestMethod]
+        public void Credit_WhenAmountIsLessThanZero_ShouldThrowArgumentOutOfRange()
+        {
+            // Arrange
+            double beginningBalance = 10;
+            double creditAmount = -5;
+
+            BankAccount account = new BankAccount("Test User", beginningBalance);
+
+            // Act and Assert
+            Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => account.Credit(creditAmount));
+
+        }
     }
 }
