@@ -92,5 +92,21 @@ namespace BankTests
             Assert.ThrowsException<System.ArgumentOutOfRangeException>(() => account.Credit(creditAmount));
 
         }
+
+        [TestMethod]
+        public void Credit_WhenAmountIsZero_BalanceShouldNotChange()
+        {
+            // Arrange
+            double beginningBalance = 10.0;
+            double creditAmount = 0.0;
+
+            BankAccount account = new BankAccount("Test User", beginningBalance);
+
+            // Act
+            account.Credit(creditAmount);
+
+            // Assert
+            Assert.AreEqual(beginningBalance, account.Balance, 0.001, "The balance should not change when replenishing by 0");
+        }
     }
 }
