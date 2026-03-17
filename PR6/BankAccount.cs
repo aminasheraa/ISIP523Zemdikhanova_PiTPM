@@ -18,6 +18,11 @@ namespace BankAccountNS
         /// </summary>
         private double m_balance;
 
+
+        public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
+        public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
+
+
         /// <summary>
         /// Приватный конструктор по умолчанию
         /// Используется только внутри класса
@@ -62,12 +67,13 @@ namespace BankAccountNS
         {
             if (amount > m_balance)
             {
-                throw new ArgumentOutOfRangeException("amount");
+                throw new System.ArgumentOutOfRangeException("amount", amount, DebitAmountExceedsBalanceMessage);
             }
 
-            if (amount < 0)
-            {
-                throw new ArgumentOutOfRangeException("amount");
+
+            if (amount < 0) 
+            { 
+                throw new System.ArgumentOutOfRangeException("amount", amount, DebitAmountLessThanZeroMessage); 
             }
 
             m_balance -= amount;
