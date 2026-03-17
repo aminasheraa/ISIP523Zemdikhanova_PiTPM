@@ -108,5 +108,21 @@ namespace BankTests
             // Assert
             Assert.AreEqual(beginningBalance, account.Balance, 0.001, "The balance should not change when replenishing by 0");
         }
+
+        [TestMethod]
+        public void Credit_MultipleCredits_UpdatesBalanceCorrectly()
+        {
+            // Arrange
+            double beginningBalance = 10.0;
+
+            BankAccount account = new BankAccount("Test User", beginningBalance);
+
+            // Act
+            account.Credit(5);
+            account.Credit(3);
+
+            // Assert
+            Assert.AreEqual(18, account.Balance, 0.001, "The balance after several top-ups is calculated incorrectly");
+        }
     }
 }
