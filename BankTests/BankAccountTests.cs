@@ -59,5 +59,25 @@ namespace BankTests
 
             Assert.Fail("The expected exception was not thrown.");
         }
+
+        [TestMethod]
+        public void Credit_WithValidAmount_UpdatesBalance()
+        {
+            // Arrange
+            double beginningBalance = 10;
+            double creditAmount = 5;
+            double expected = 15;
+
+            BankAccount account = new BankAccount("Test User", beginningBalance);
+
+            // Act
+            account.Credit(creditAmount);
+
+            // Assert
+            double actual = account.Balance;
+
+            Assert.AreEqual(expected, actual, 0.001, "Баланс после пополнения рассчитан неверно");
+        }
+
     }
 }

@@ -18,8 +18,14 @@ namespace BankAccountNS
         /// </summary>
         private double m_balance;
 
-
+        /// <summary>
+        /// Сообщение об ошибке, если сумма списания превышает баланс.
+        /// </summary>
         public const string DebitAmountExceedsBalanceMessage = "Debit amount exceeds balance";
+
+        /// <summary>
+        /// Сообщение об ошибке, если сумма списания меньше нуля.
+        /// </summary>
         public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
 
 
