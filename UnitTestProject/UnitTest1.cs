@@ -28,6 +28,36 @@ namespace UnitTestProject
             Assert.AreNotEqual(0, result);
         }
 
+        [TestMethod]
+        public void Page1_Calculate_XOutOfRange_ReturnsFalse()
+        {
+            var page = new Page1();
+
+            bool success = page.Calculate(2, 1, 2, out double result);
+
+            Assert.IsFalse(success);
+        }
+
+        [TestMethod]
+        public void Page1_Calculate_DivisionByZero_ReturnsFalse()
+        {
+            var page = new Page1();
+
+            bool success = page.Calculate(0, 0, 0, out double result);
+
+            Assert.IsFalse(success);
+        }
+
+        [TestMethod]
+        public void Page1_Calculate_CorrectResult_CheckValue()
+        {
+            var page = new Page1();
+
+            bool success = page.Calculate(0.5, 1, 2, out double result);
+
+            Assert.IsTrue(success);
+            Assert.AreEqual(1.846999, result, 0.0001);
+        }
 
     }
 }
