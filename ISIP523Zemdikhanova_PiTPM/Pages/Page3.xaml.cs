@@ -97,65 +97,81 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
             }
         }
 
+        /// <summary>
+        /// Вычисляет значения функции и сообщает о наличии некорректных значений.
+        /// </summary>
+        /// <param name="x0">Начальное значение X</param>
+        /// <param name="xk">Конечное значение X</param>
+        /// <param name="dx">Шаг</param>
+        /// <param name="b">Параметр B</param>
+        /// <param name="result">Список значений (x, y)</param>
+        /// <param name="hasErrors">Были ли пропущенные значения (из-за отрицательного корня)</param>
+        /// <returns>true - если входные данные корректны</returns>
+        public bool Calculate(double x0, double xk, double dx, double b,
+            out List<(double x, double y)> result,
+            out bool hasErrors)
+        {
+            result = new List<(double x, double y)>();
+            hasErrors = false;
+
+            if (dx <= 0 || x0 > xk || dx > Math.Abs(xk - x0))
+                return false;
+
+            for (double x = x0; x <= xk; x += dx)
+            {
+                double underRoot = Math.Pow(x, 3) + Math.Pow(b, 3);
+
+                if (underRoot < 0)
+                {
+                    hasErrors = true;
+                    continue;
+                }
+
+                double y = 9 * (x + 15 * Math.Sqrt(underRoot));
+                result.Add((x, y));
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Обработчик кнопки построения графика
+        /// Выполняет проверку ввода и отображает результаты вычислений
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ChartFunction.Series[0].Points.Clear();
 
-                if (string.IsNullOrWhiteSpace(X0TextBox.Text) || string.IsNullOrWhiteSpace(XKTextBox.Text) || string.IsNullOrWhiteSpace(DXTextBox.Text) || string.IsNullOrWhiteSpace(BTextBox.Text))
-                {
-                    MessageBox.Show("Заполните все поля");
-                    return;
-                }
-
-                if (!double.TryParse(X0TextBox.Text.Replace('.', ','), out double x0) || !double.TryParse(XKTextBox.Text.Replace('.', ','), out double xk) | !double.TryParse(DXTextBox.Text.Replace('.', ','), out double dx) || !double.TryParse(BTextBox.Text.Replace('.', ','),  out double b))
-                {
-                    MessageBox.Show("Введите корректные числа");
-                    return;
-                }
-
-
-                if (dx <= 0)
-                {
-                    MessageBox.Show("Шаг dx должен быть больше 0");
-                    return;
-                }
-
-                if (x0 > xk)
-                {
-                    MessageBox.Show("Ошибка: начальное значение X0 больше конечного значения XK");
-                    return;
-                }
-
-                if (dx > Math.Abs(xk - x0))
-                {
-                    MessageBox.Show("Ошибка: шаг dx больше расстояния между начальным и конечным значением X");
-                    return;
-                }
-
-
-            Series series = ChartFunction.Series.First();
-                series.Points.Clear();
-
-
-                AnswerTextBlock.Text = "";
-
-                for (double x = x0; x <= xk; x += dx)
-                {
-                    double underRoot = Math.Pow(x, 3) + Math.Pow(b, 3);
-
-                    if (underRoot < 0)
-                    {
-                        AnswerTextBlock.Text += $"x = {x:F2} - подкоренное выражение < 0\n";
-                        continue;
-                    }
-
-                    double y = 9 * (x + 15 * Math.Sqrt(underRoot));
-
-                    series.Points.AddXY(x, y);
-
-                    AnswerTextBlock.Text += $"x = {x:F2}   y = {y:F4}\n";
-                }
+            if (!double.TryParse(X0TextBox.Text.Replace('.', ','), out double x0) ||
+                !double.TryParse(XKTextBox.Text.Replace('.', ','), out double xk) ||
+                !double.TryParse(DXTextBox.Text.Replace('.', ','), out double dx) ||
+                !double.TryParse(BTextBox.Text.Replace('.', ','), out double b))
+            {
+                MessageBox.Show("Введите корректные числа");
+                return;
             }
+
+            if (!Calculate(x0, xk, dx, b, out var values, out bool hasErrors))
+            {
+                MessageBox.Show("Ошибка входных данных");
+                return;
+            }
+
+            var series = ChartFunction.Series.First();
+            series.Points.Clear();
+            AnswerTextBlock.Text = "";
+
+            foreach (var (x, y) in values)
+            {
+                series.Points.AddXY(x, y);
+                AnswerTextBlock.Text += $"x = {x:F2}   y = {y:F4}\n";
+            }
+
+            if (hasErrors)
+            {
+                MessageBox.Show("Некоторые значения пропущены (подкоренное выражение < 0)");
+            }
+        }
 
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
