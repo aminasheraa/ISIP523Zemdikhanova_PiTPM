@@ -70,6 +70,10 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
             }
         }
 
+        /// <summary>
+        /// Обработчик кнопки расчета
+        /// Проверяет ввод, определяет выбранную функцию и выводит результат
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(XTextBox.Text) || string.IsNullOrWhiteSpace(BTextBox.Text))
@@ -78,49 +82,87 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
                 return;
             }
 
-            if (!double.TryParse(XTextBox.Text.Replace('.', ','), out double x) || !double.TryParse(BTextBox.Text.Replace('.', ','), out double b))
+            if (!double.TryParse(XTextBox.Text.Replace('.', ','), out double x) ||
+                !double.TryParse(BTextBox.Text.Replace('.', ','), out double b))
             {
                 MessageBox.Show("Введите корректные числа");
                 return;
             }
 
-            if (RadioButton1.IsChecked != true && RadioButton2.IsChecked != true && RadioButton3.IsChecked != true)
+            int functionType = 0;
+
+            if (RadioButton1.IsChecked == true) functionType = 1;
+            else if (RadioButton2.IsChecked == true) functionType = 2;
+            else if (RadioButton3.IsChecked == true) functionType = 3;
+
+            if (functionType == 0)
             {
                 MessageBox.Show("Выберите функцию f(x)");
                 return;
             }
 
-            double fx = CalculateF(x);
-            double answer = 0;
-
-            if (1 < (x * b) && (x * b) < 10)
+            if (Calculate(x, b, functionType, out double result))
             {
-                answer = Math.Exp(fx);
-            }
-            else if (12 < (x * b) && (x * b) < 40)
-            {
-                answer = Math.Sqrt(Math.Abs(fx + 4 * b));
+                AnswerTextBlock.Text = Math.Round(result, 7).ToString();
             }
             else
             {
-                answer = b * Math.Pow(fx, 2);
+                MessageBox.Show("Ошибка вычисления!");
+            }
+        }
+
+        /// <summary>
+        /// Вычисляет значение функции в зависимости от выбранного варианта f(x) и условий для произведения x и b
+        /// </summary>
+        /// <param name="x">Переменная X</param>
+        /// <param name="b">Переменная B</param>
+        /// <param name="functionType">
+        /// Тип функции:
+        /// 1 - sinh(x)
+        /// 2 - x^2
+        /// 3 - exp(x)
+        /// </param>
+        /// <param name="result">Результат вычисления</param>
+        /// <returns>true - если вычисление успешно, false - если ошибка</returns>
+        public bool Calculate(double x, double b, int functionType, out double result)
+        {
+            result = 0;
+
+            double fx;
+
+            switch (functionType)
+            {
+                case 1:
+                    fx = Math.Sinh(x);
+                    break;
+                case 2:
+                    fx = Math.Pow(x, 2);
+                    break;
+                case 3:
+                    fx = Math.Exp(x);
+                    break;
+                default:
+                    return false;
             }
 
-            AnswerTextBlock.Text = Math.Round(answer, 7).ToString();
+            double xb = x * b;
 
+            if (1 < xb && xb < 10)
+            {
+                result = Math.Exp(fx);
+            }
+            else if (12 < xb && xb < 40)
+            {
+                result = Math.Sqrt(Math.Abs(fx + 4 * b));
+            }
+            else
+            {
+                result = b * Math.Pow(fx, 2);
+            }
 
+            return true;
         }
 
-        private double CalculateF(double x)
-        {
-            if (RadioButton1.IsChecked == true)
-                return Math.Sinh(x);
-
-            if (RadioButton2.IsChecked == true)
-                return Math.Pow(x, 2);
-
-            return Math.Exp(x);
-        }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
