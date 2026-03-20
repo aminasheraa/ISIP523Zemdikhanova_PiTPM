@@ -109,5 +109,75 @@ namespace UnitTestProject
 
             Assert.IsFalse(success);
         }
+
+        [TestMethod]
+        public void  Page3_Calculate_ValidData_ReturnsTrue()
+        {
+            var page = new Page3();
+
+            bool success = page.Calculate(1, 3, 1, 2, out var result, out bool hasErrors);
+
+            Assert.IsTrue(success);
+            Assert.IsTrue(result.Count > 0);
+            Assert.IsFalse(hasErrors);
+        }
+
+        [TestMethod]
+        public void Page3_Calculate_X0MoreThanXk_ReturnsFalse()
+        {
+            var page = new Page3();
+
+            bool success = page.Calculate(5, 1, 1, 2, out var result, out bool hasErrors);
+
+            Assert.IsFalse(success);
+        }
+
+        [TestMethod]
+        public void Page3_Calculate_DxTooBig_ReturnsFalse()
+        {
+            var page = new Page3();
+
+            bool success = page.Calculate(1, 2, 5, 2, out var result, out bool hasErrors);
+
+            Assert.IsFalse(success);
+        }
+
+        [TestMethod]
+        public void Page3_Calculate_NegativeUnderRoot_HasErrorsTrue()
+        {
+            var page = new Page3();
+
+            bool success = page.Calculate(-5, -1, 1, 0, out var result, out bool hasErrors);
+
+            Assert.IsTrue(success);
+            Assert.IsTrue(hasErrors);
+        }
+
+        [TestMethod]
+        public void Page3_Calculate_AllValuesInvalid_ResultEmpty()
+        {
+            var page = new Page3();
+
+            bool success = page.Calculate(-5, -1, 1, 0, out var result, out bool hasErrors);
+
+            Assert.IsTrue(success);
+            Assert.AreEqual(0, result.Count);
+        }
+
+        [TestMethod]
+        public void Page3_Calculate_CheckCorrectValue()
+        {
+            var page = new Page3();
+
+            bool success = page.Calculate(1, 2, 1, 1, out var result, out bool hasErrors);
+
+            Assert.IsTrue(success);
+
+            double x = 1;
+            double underRoot = Math.Pow(x, 3) + Math.Pow(1, 3);
+            double expected = 9 * (x + 15 * Math.Sqrt(underRoot));
+
+            Assert.AreEqual(expected, result[0].y, 0.001);
+        }
     }
 }
