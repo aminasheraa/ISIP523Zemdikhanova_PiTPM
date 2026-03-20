@@ -59,5 +59,55 @@ namespace UnitTestProject
             Assert.AreEqual(1.846999, result, 0.0001);
         }
 
+        [TestMethod]
+        public void Page2_Calculate_Sinh_ReturnsCorrectValue()
+        {
+            var page = new Page2();
+
+            bool success = page.Calculate(2, 2, 1, out double result);
+
+            Assert.IsTrue(success);
+            Assert.AreEqual(Math.Exp(Math.Sinh(2)), result, 0.001);
+        }
+
+        [TestMethod]
+        public void Page2_Calculate_Pow_ReturnsCorrectValue()
+        {
+            var page = new Page2();
+
+            bool success = page.Calculate(3, 5, 2, out double result);
+
+            Assert.IsTrue(success);
+
+            double fx = Math.Pow(3, 2);
+            double expected = Math.Sqrt(Math.Abs(fx + 4 * 5));
+
+            Assert.AreEqual(expected, result, 0.001);
+        }
+
+        [TestMethod]
+        public void Page2_Calculate_Exp_ReturnsCorrectValue()
+        {
+            var page = new Page2();
+
+            bool success = page.Calculate(0.5, 0.5, 3, out double result);
+
+            Assert.IsTrue(success);
+
+            double fx = Math.Exp(0.5);
+            double expected = 0.5 * Math.Pow(fx, 2);
+
+            Assert.AreEqual(expected, result, 0.001);
+        }
+
+        [TestMethod]
+        public void Page2_Calculate_InvalidFunction_ReturnsFalse()
+        {
+            var page = new Page2();
+
+            bool success = page.Calculate(1, 1, 0, out double result);
+
+            Assert.IsFalse(success);
+        }
     }
 }
