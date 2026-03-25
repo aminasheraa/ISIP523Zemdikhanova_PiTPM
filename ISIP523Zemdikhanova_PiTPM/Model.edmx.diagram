@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aaeb9590f2d9478c91a2447b7640609a" Name="Diagram1">
+        <EntityTypeShape EntityType="PR14GordovModel.AgeRating" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.FilmGenre" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.Films" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.Genre" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.Room" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.RoomCategory" Width="1.5" PointX="3.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.Seat" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.SeatSession" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.Session" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.Ticket" Width="1.5" PointX="10.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PR14GordovModel.User" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <AssociationConnector Association="PR14GordovModel.FK_Films_AgeRating" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_FilmGenre_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_FilmGenre_Genre" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_Session_Films" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_Room_RoomCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_Session_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_Sit_Room" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_SeatSession_Seat" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_Ticket_Sit" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_SeatSession_Session" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_Ticket_Session" ManuallyRouted="false" />
+        <AssociationConnector Association="PR14GordovModel.FK_Ticket_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
