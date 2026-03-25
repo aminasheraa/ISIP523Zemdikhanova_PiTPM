@@ -25,26 +25,64 @@ namespace ISIP523Zemdikhanova_PiTPM.Pages
             InitializeComponent();
         }
 
-        private void AuthBtn_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Выполняет авторизацию пользователя по логину и паролю.
+        /// </summary>
+        /// <param name="login">Логин пользователя.</param>
+        /// <param name="password">Пароль пользователя.</param>
+        /// <returns>
+        /// Возвращает <c>true</c>, если авторизация прошла успешно;
+        /// иначе <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// Метод выполняет следующие проверки:
+        /// <list type="bullet">
+        /// <item><description>Проверка на пустые значения логина и пароля.</description></item>
+        /// <item><description>Проверка длины пароля (от 8 до 32 символов).</description></item>
+        /// <item><description>Поиск пользователя в базе данных по логину (без учета регистра).</description></item>
+        /// <item><description>Проверка соответствия пароля (с учетом регистра).</description></item>
+        /// </remarks>
+        public bool Auth(string login, string password)
         {
-            if (string.IsNullOrWhiteSpace(LoginTB.Text) || string.IsNullOrWhiteSpace(PasswordTB.Text))
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Введите логин и пароль");
-                return;
+                return false;
             }
 
-            var user = Core.Context.User.FirstOrDefault(u => u.Username == LoginTB.Text && u.Password == PasswordTB.Text);
+            if (password.Length < 8 || password.Length > 32)
+            {
+                MessageBox.Show("Пароль должен быть от 8 до 32 символов");
+                return false;
+            }
 
-            if (user == null)
+            var user = Core.Context.User.FirstOrDefault(u => u.Username.Trim().ToLower() == login.Trim().ToLower());
+
+            if (user == null || user.Password != password)
             {
                 MessageBox.Show("Неверный логин или пароль");
-                return;
+                return false;
             }
 
             Core.CurrentUser = user;
 
             MessageBox.Show("Успешный вход в аккаунт");
-            NavigationService.Navigate(new MainPage());
+
+            if (NavigationService != null)
+            {
+                NavigationService.Navigate(new MainPage());
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Обработчик нажатия кнопки авторизации.
+        /// Запускает процесс проверки введённых пользователем логина и пароля.
+        /// </summary>
+        private void AuthBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Auth(LoginTB.Text, PasswordTB.Text);
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
