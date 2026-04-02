@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP523Zemdikhanova_PiTPM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Применение закона Ома" Height="250" Width="800">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical"  Margin="10">
+                <StackPanel Orientation="Horizontal" Margin="5" >
+                    <TextBlock x:Name="TextBlock1" Text="Напряжение (Вольт): " FontSize="18"/>
+                    <TextBox x:Name="TextBox1" Height="25" Width="60" PreviewTextInput="TextBox1_PreviewTextInput"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="5">
+                    <TextBlock x:Name="TextBlock2" Text="Сопротивление (Ом): " FontSize="18"/>
+                    <TextBox x:Name="TextBox2" Height="25" Width="60" PreviewTextInput="TextBox1_PreviewTextInput"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="TextBlock3" Text="Сила тока = " FontSize="18" Margin="0, 35, 0, 0"/>
+                    <TextBlock x:Name="AnswerTextBlock" FontSize="18"  Margin="0, 35, 0, 0"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="Вычисляемая величина: " FontSize="18" Margin="3"/>
+                <RadioButton x:Name="RadioButton1" Content="Сила тока" FontSize="16" Checked="RadioButton_Checked_1"/>
+                <RadioButton x:Name="RadioButton2" Content="Напряжение" FontSize="16" Checked="RadioButton_Checked_2"/>
+                <RadioButton x:Name="RadioButton3" Content="Сопротивление" FontSize="16" Checked="RadioButton_Checked_3"/>
+
+                <Button x:Name="CalculateButton" Content="Вычислить" Height="30" FontSize="18" Margin="10, 15, 10, 10" Click="CalculateButton_Click"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
