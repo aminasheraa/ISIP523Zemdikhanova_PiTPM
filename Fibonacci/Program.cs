@@ -9,6 +9,12 @@ namespace Fibonacci
             int result = Fibonacci(5);
             Console.WriteLine(result);
         }
+
+        /// <summary>
+        /// Вычисляет число Фибоначчи для заданной позиции n.
+        /// </summary>
+        /// <param name="n">Индекс числа в последовательности Фибоначчи.</param>
+        /// <returns>Значение числа Фибоначчи.</returns>
         static int Fibonacci(int n)
         {
             Console.WriteLine("The output is: ");
@@ -16,7 +22,7 @@ namespace Fibonacci
             int n2 = 1;
             int sum;
 
-            for (int i = 2; i < n; i++)
+            for (int i = 2; i <= n; i++)
             {
                 sum = n1 + n2;
                 n1 = n2;
