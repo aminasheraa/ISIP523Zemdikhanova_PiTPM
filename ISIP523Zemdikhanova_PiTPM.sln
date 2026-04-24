@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISIP523Zemdikhanova_PiTPM", "ISIP523Zemdikhanova_PiTPM\ISIP523Zemdikhanova_PiTPM.csproj", "{CF6C918D-9C84-4830-8553-69002C81D23F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestPR7part2", "UnitTestPR7part2\UnitTestPR7part2.csproj", "{BE944594-0CC8-48B2-A6E2-8B1922373A12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{CF6C918D-9C84-4830-8553-69002C81D23F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF6C918D-9C84-4830-8553-69002C81D23F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF6C918D-9C84-4830-8553-69002C81D23F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE944594-0CC8-48B2-A6E2-8B1922373A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE944594-0CC8-48B2-A6E2-8B1922373A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE944594-0CC8-48B2-A6E2-8B1922373A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE944594-0CC8-48B2-A6E2-8B1922373A12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
