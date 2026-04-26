@@ -62,8 +62,8 @@ namespace UnitTestPR7part2
         {
             string text = "HELLO";
 
-            string enc1 = AdfgvxCipher.Encrypt(text, "KEY1");
-            string enc2 = AdfgvxCipher.Encrypt(text, "KEY2");
+            string enc1 = AdfgvxCipher.Encrypt(text, "ABCD"); 
+            string enc2 = AdfgvxCipher.Encrypt(text, "DCBA"); 
 
             Assert.AreNotEqual(enc1, enc2);
         }
@@ -140,10 +140,9 @@ namespace UnitTestPR7part2
         [TestMethod]
         public void Decrypt_WrongKey_ShouldNotReturnOriginal() // неправильный ключ
         {
-            string text = "HELLO";
-            string key = "KEY";
-            string wrongKey = "BAD";
-
+            string text = "SECRETINFORMATION";
+            string key = "ORANGE";
+            string wrongKey = "APPLE"; 
             string encrypted = AdfgvxCipher.Encrypt(text, key);
             string decrypted = AdfgvxCipher.Decrypt(encrypted, wrongKey);
 
