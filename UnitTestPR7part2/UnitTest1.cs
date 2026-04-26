@@ -52,7 +52,7 @@ namespace UnitTestPR7part2
         {
             string text = "HELLO";
 
-            string encrypted = AdfgvxCipher.Encrypt(text, null); // ❗ исправил (у тебя было "")
+            string encrypted = AdfgvxCipher.Encrypt(text, null);
 
             Assert.IsTrue(string.IsNullOrEmpty(encrypted));
         }

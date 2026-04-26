@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ISIP523Zemdikhanova_PiTPM"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Шифр ADFGVX" MinHeight="640" MinWidth="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#CFCFCF" CornerRadius="5" Padding="15" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock Text="Шифр ADFGVX" FontWeight="Bold" FontFamily="Book Antiqua" FontSize="16" Margin="0,0,0,5" />
+                <TextBlock FontFamily="Book Antiqua" TextWrapping="Wrap" FontSize="12" LineHeight="18">
+                    <Run FontWeight="Bold">ADFGVX</Run> — это немецкий шифр времен Первой мировой войны. Он использует матрицу 6x6 для замены каждой буквы сообщения на пару координат (A, D, F, G, V, X) и последующую перестановку столбцов по ключу.
+                </TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Margin="0,0,20,0">
+                <TextBlock FontFamily="Book Antiqua" Text="Матрица 6x6" FontWeight="Bold" Margin="0,0,0,10"/>
+                <UniformGrid Name="MatrixGrid" Rows="6" Columns="6" Height="250" Width="250" Background="White" 
+                             ToolTip="Алфавитная таблица для этапа замены (Квадрат Полибия)"/>
+                <Button Content="Перемешать матрицу" FontFamily="Book Antiqua" Click="ShuffleMatrix_Click" Margin="0,15,0,0" Padding="5"
+                        ToolTip="Генерирует случайное расположение символов в матрице для повышения безопасности"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Текст:" FontFamily="Book Antiqua"/>
+                <TextBox Name="InputText" FontFamily="Book Antiqua" Margin="0,5,0,10" Height="60" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+                         ToolTip="Введите исходный текст для шифрования или зашифрованный код для расшифровки"/>
+
+                <TextBlock Text="Ключ перестановки:" FontFamily="Book Antiqua"/>
+                <TextBox Name="KeyInput" FontFamily="Book Antiqua" Margin="0,5,0,10" Padding="3"
+                         ToolTip="Ключевое слово, определяющее порядок перестановки столбцов на втором этапе"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                    <Button Content="Зашифровать" FontFamily="Book Antiqua" Click="Encrypt_Click" Width="120" Margin="5"
+                            ToolTip="Запустить процесс замены и транспозиции"/>
+                    <Button Content="Расшифровать" FontFamily="Book Antiqua" Click="Decrypt_Click" Width="120" Margin="5"
+                            ToolTip="Восстановить исходный текст по ключу и матрице"/>
+                </StackPanel>
+
+                <TextBlock Text="Результат:" FontFamily="Book Antiqua" Margin="0,10,0,0"/>
+                <TextBox Name="OutputText" FontFamily="Book Antiqua" Margin="0,5,0,10" Height="60" IsReadOnly="True" Background="#F9F9F9"
+                         ToolTip="Здесь появится итоговый результат работы алгоритма"/>
+
+                <TextBlock Text="Шаги выполнения:" FontFamily="Book Antiqua" Margin="0,10,0,0"/>
+                <TextBox Name="LogArea" FontFamily="Book Antiqua" Margin="0,5,0,0" Height="120" IsReadOnly="True" Background="#F0F0F0" 
+                         TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" FontSize="11" Foreground="#555" BorderBrush="#CCCCCC"
+                         ToolTip="Подробный отчет о внутренних этапах работы программы"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
